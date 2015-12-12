@@ -2,6 +2,7 @@
 
 import requests
 import os
+import socket
 cntnd = ""
 def conectar(sitio, archivo):
 	global cntnd
@@ -40,3 +41,30 @@ def buscar(dirc):
 	otra = input(">> ")
 	if otra == "s":
 		buscar(dirc)
+
+def puertos(dirc):
+	os.system("clear")
+	print("Introduce la IP que deseas escanear:") 
+	dIP = input('>> ')
+	"""print("Escanear desde: ")
+	x = input(">> ")
+	print("Escanear hasta: ")
+	y = input(">> ")
+	os.system("clear")
+	x = int(x)
+	y = int(y)
+	if x < 1 or y > 1025 or x > 1024 or y < 2:
+		print("ERROR: El rango de puertos va de 1 a 1025!")
+		puertos(dirc)
+	else:"""
+		for port in range (x, y):
+
+			sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+
+			rslt = sock.connect_ex((dIP,port))
+
+			if rslt == 0:
+
+				print('Puerto {}: Abierto'.format(port))
+
+		sock.close()
