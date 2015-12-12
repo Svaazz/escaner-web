@@ -13,6 +13,7 @@ def main(direccion):
 	print("1. Buscar cadena de caracteres.")
 	print("2. Guardar contenido en el disco.")
 	print("3. Cambiar url.")
+	print("4. Escanear puertos abiertos. (Necesaria IP)")
 	print("##################################")
 	eleccion = input(">> ")
 	if eleccion == "1":
@@ -32,6 +33,9 @@ def main(direccion):
 		os.system("clear")
 		print("Saliendo...")
 		exit()
+	elif eleccion == "4":
+		bone.puertos(direccion)
+		main(direccion)
 	else:
 		main(direccion)
 
