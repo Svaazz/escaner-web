@@ -57,14 +57,14 @@ def puertos(dirc):
 		print("ERROR: El rango de puertos va de 1 a 1025!")
 		puertos(dirc)
 	else:"""
-		for port in range (x, y):
+	for port in range (x, y):
 
-			sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-			rslt = sock.connect_ex((dIP,port))
+		rslt = sock.connect_ex((dIP,port))
 
-			if rslt == 0:
+		if rslt == 0:
 
-				print('Puerto {}: Abierto'.format(port))
+			print('Puerto {}: Abierto'.format(port))
 
-		sock.close()
+	sock.close()
