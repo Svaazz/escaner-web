@@ -7,7 +7,8 @@ sitio = ""
 def main(direccion):
 	global archivo
 	os.system("clear")
-	print("############By Svaazz#############")
+	print("########### Escaner Web ##########")
+	print("URL actual: ", direccion)
 	print("##################################")
 	print("0. Salir.")
 	print("1. Buscar cadena de caracteres.")
