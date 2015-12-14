@@ -7,15 +7,17 @@ sitio = ""
 def main(direccion):
 	global archivo
 	os.system("clear")
-	print("########### Escaner Web ##########")
-	print("URL actual: ", direccion)
-	print("##################################")
-	print("0. Salir.")
-	print("1. Buscar cadena de caracteres.")
-	print("2. Guardar contenido en el disco.")
-	print("3. Cambiar url.")
-	print("4. Escanear puertos abiertos. (Necesaria IP)")
-	print("##################################")
+	print("""\
+		################ Escaner Web ###############
+		URL actual: """, direccion, """
+		############################################
+		0. Salir.")
+		1. Buscar cadena de caracteres.
+		2. Guardar contenido en el disco.
+		3. Cambiar url.
+		4. Escanear puertos abiertos. (Necesaria IP)
+	   	############################################
+	    """)
 	eleccion = input(">> ")
 	if eleccion == "1":
 		bone.buscar(direccion)
