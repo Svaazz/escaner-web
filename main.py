@@ -11,11 +11,12 @@ def main(direccion):
 		################ Escaner Web ###############
 		URL actual: """, direccion, """
 		############################################
-		0. Salir.")
+		0. Salir.
 		1. Buscar cadena de caracteres.
 		2. Guardar contenido en el disco.
 		3. Cambiar url.
 		4. Escanear puertos abiertos. (Necesaria IP)
+		5. Abrir en el navegador.
 	   	############################################
 	    """)
 	eleccion = input(">> ")
@@ -31,7 +32,7 @@ def main(direccion):
 		bone.conectar(direccion, archivo)
 		main(direccion)
 	elif eleccion == "3":
-		url()
+		url("CAMBIAR URL.")
 	elif eleccion == "0":
 		os.system("clear")
 		print("Saliendo...")
@@ -39,16 +40,22 @@ def main(direccion):
 	elif eleccion == "4":
 		bone.puertos(direccion)
 		main(direccion)
+	elif eleccion == "5":
+		bone.navegador(direccion)
 	else:
 		main(direccion)
 
-def url():
+def url(error = ""):
 	os.system("clear")
-
+	print(error)
+	print("")
 	print("Por favor introduce una URL: (http://ejemplo.com)")
 	sitio = input(str(">> "))
-	if sitio.startswith("http"):
+	if sitio.startswith("http://") or sitio.startswith("https://") and sitio.find('.') != -1:
 		main(sitio)
+	elif sitio.find('.') == -1:
+		url("ERROR: URL NO VALIDA.")
 	else:
-		url()
+		sitio = "http://" + sitio
+		main(sitio)
 url()
