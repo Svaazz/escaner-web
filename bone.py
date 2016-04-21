@@ -68,3 +68,10 @@ def puertos(dirc):
 			print('Puerto {}: Abierto'.format(port))
 
 	sock.close()
+
+def navegador(dirc):
+	instruccion = "firefox " + dirc
+	try:
+		os.system(instruccion)
+	except valorError:
+		print("ERROR: ", valorError)
