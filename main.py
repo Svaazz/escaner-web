@@ -2,40 +2,32 @@
 
 import os
 import bone
+import lang
 sitio = ""
 
 def main(direccion):
 	global archivo
 	bone.limpiar()
-	print("""\
-		################ Escaner Web ###############
-		URL actual: """, direccion, """
-		############################################
-		0. Salir.
-		1. Buscar cadena de caracteres.
-		2. Guardar contenido en el disco.
-		3. Cambiar url.
-		4. Escanear puertos abiertos. (Necesaria IP)
-		5. Abrir en el navegador.
-	   	############################################
-	    """)
+	print(lang.main('cabecera1'), direccion, lang.main('cabecera2'))
+		
+	print(lang.main('menu1'))
 	eleccion = input(">> ")
 	if eleccion == "1":
 		bone.buscar(direccion)
 		main(direccion)
 	elif eleccion == "2":
-		print("Introduce un nombre para el archivo:")
+		print(lang.main('nArch'))
 		archivo = input(str(">> "))
 		if archivo == "":
 			archivo = "SinNombre.html"
-		print("El archivo ", archivo, " esta siendo creado")
+		print(lang.main('elArch'), archivo, lang.main('sCreado'))
 		bone.conectar(direccion, archivo)
 		main(direccion)
 	elif eleccion == "3":
-		url("CAMBIAR URL.")
+		url(lang.main('cambUrl'))
 	elif eleccion == "0":
 		bone.limpiar()
-		print("Saliendo...")
+		print(lang.main('saliendo'))
 		exit()
 	elif eleccion == "4":
 		bone.puertos(direccion)
@@ -50,12 +42,12 @@ def url(error = ""):
 	bone.limpiar()
 	print(error)
 	print("")
-	print("Por favor introduce una URL: (http://ejemplo.com)")
+	print(lang.main('intUrl'))
 	sitio = input(str(">> "))
 	if sitio.startswith("http://") or sitio.startswith("https://") and sitio.find('.') != -1:
 		main(sitio)
 	elif sitio.find('.') == -1:
-		url("ERROR: URL NO VALIDA.")
+		url(lang.main('errUrl'))
 	else:
 		sitio = "http://" + sitio
 		main(sitio)

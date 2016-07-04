@@ -3,6 +3,8 @@
 import requests
 import os
 import socket
+import lang
+
 cntnd = ""
 def conectar(sitio, archivo):
 	global cntnd
@@ -17,14 +19,14 @@ def conectar(sitio, archivo):
 	rchv.write(cntnd) #Guarda el contenido
 	rchv.close() #Cierra el archivo
 
-	print("Archivo ", archivo, " creado con exito!")
+	print(lang.main('arch'), archivo, lang.main('creado'))
 
 def buscar(dirc):
 	cnxn = requests.get(dirc)
 	cntnd = cnxn.text
 	limpiar()
 	print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-	print("Buscar un conjunto de caracteres en el codigo fuente. (Pulsa ENTER para saltar)")
+	print(lang.main('bCarac'))
 	plbr = input(str(">> "))
 	if len(plbr) > 1:
 		x = cntnd.find(plbr)
@@ -32,44 +34,44 @@ def buscar(dirc):
 		w = x + len(plbr) + 15
 		z = cntnd[y:w]
 	else:
-		print("No se ha introducido ningun dato, saliendo...")
+		print(lang.main('noDato'))
 		exit()
 	if x < 0:
 		print("")
-		print("No se han encontrado coincidencias")
+		print(lang.main('noCoin'))
 	else:
 		print("")
-		print("Se ha encontrado ", plbr, " en el texto analizado:")	
+		print(lang.main('seEncon'), plbr, lang.main('enTxt'))	
 		print(z)
-	print("Deseas buscar otra cadena de caracteres? (s/n)")
+	print(lang.main('bOtra'))
 	otra = input(">> ")
-	if otra == "s":
+	if otra == "s" or otra == "y":
 		buscar(dirc)
 
 def puertos(dirc):
-	os.system("clear")
-	print("Introduce la IP que deseas escanear:") 
+	limpiar()
+	print(lang.main('intIp')) 
 	dIP = input('>> ')
-	"""print("Escanear desde: ")
+	print(lang.main('esDes'))
 	x = input(">> ")
-	print("Escanear hasta: ")
+	print(lang.main('esHas'))
 	y = input(">> ")
 	limpiar()
 	x = int(x)
 	y = int(y)
 	if x < 1 or y > 1025 or x > 1024 or y < 2:
-		print("ERROR: El rango de puertos va de 1 a 1025!")
+		print(lang.main('errPuer'))
 		puertos(dirc)
-	else:"""
-	for port in range (x, y):
+	else:
+		for port in range (x, y):
 
-		sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+			sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
-		rslt = sock.connect_ex((dIP,port))
+			rslt = sock.connect_ex((dIP,port))
 
-		if rslt == 0:
+			if rslt == 0:
 
-			print('Puerto {}: Abierto'.format(port))
+				print(lang.main('pAb').format(port))
 
 	sock.close()
 
