@@ -8,6 +8,10 @@ def conectar(sitio, archivo):
 	global cntnd
 	cnxn = requests.get(sitio) #cnxn viene de "conexión" sin las vocales xD
 
+	if archivo.endswith('.html'):
+		pass
+	else:
+		archivo += ".html"
 	rchv = open(archivo, "a") #rchv viene de "archivo", soy muy original, lo sé
 	cntnd = cnxn.text #cntnd viene de "contenido", ok ya vale 
 	rchv.write(cntnd) #Guarda el contenido
@@ -18,7 +22,7 @@ def conectar(sitio, archivo):
 def buscar(dirc):
 	cnxn = requests.get(dirc)
 	cntnd = cnxn.text
-	os.system("clear")
+	limpiar()
 	print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 	print("Buscar un conjunto de caracteres en el codigo fuente. (Pulsa ENTER para saltar)")
 	plbr = input(str(">> "))
@@ -50,7 +54,7 @@ def puertos(dirc):
 	x = input(">> ")
 	print("Escanear hasta: ")
 	y = input(">> ")
-	os.system("clear")
+	limpiar()
 	x = int(x)
 	y = int(y)
 	if x < 1 or y > 1025 or x > 1024 or y < 2:
@@ -70,8 +74,20 @@ def puertos(dirc):
 	sock.close()
 
 def navegador(dirc):
-	instruccion = "firefox " + dirc
+	if os.name == "nt":
+		instruccion = "start firefox " + dirc
+	else:
+		instruccion = "firefox " + dirc
+
 	try:
 		os.system(instruccion)
+		
 	except valorError:
 		print("ERROR: ", valorError)
+
+
+def limpiar():
+	if os.name == "nt":
+		os.system("cls")
+	else:
+		os.system("clear")

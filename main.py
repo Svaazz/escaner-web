@@ -6,7 +6,7 @@ sitio = ""
 
 def main(direccion):
 	global archivo
-	os.system("clear")
+	bone.limpiar()
 	print("""\
 		################ Escaner Web ###############
 		URL actual: """, direccion, """
@@ -27,14 +27,14 @@ def main(direccion):
 		print("Introduce un nombre para el archivo:")
 		archivo = input(str(">> "))
 		if archivo == "":
-			archivo = "Contenido.txt"
+			archivo = "SinNombre.html"
 		print("El archivo ", archivo, " esta siendo creado")
 		bone.conectar(direccion, archivo)
 		main(direccion)
 	elif eleccion == "3":
 		url("CAMBIAR URL.")
 	elif eleccion == "0":
-		os.system("clear")
+		bone.limpiar()
 		print("Saliendo...")
 		exit()
 	elif eleccion == "4":
@@ -42,11 +42,12 @@ def main(direccion):
 		main(direccion)
 	elif eleccion == "5":
 		bone.navegador(direccion)
+		main(direccion)
 	else:
 		main(direccion)
 
 def url(error = ""):
-	os.system("clear")
+	bone.limpiar()
 	print(error)
 	print("")
 	print("Por favor introduce una URL: (http://ejemplo.com)")
