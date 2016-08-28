@@ -31,8 +31,8 @@ def main(palabra):
 	    'bOtra':"Deseas buscar otra cadena de caracteres? (s/n)",
 	    'intIp':"Introduce la IP que deseas escanear:",
 	    'pAb':'Puerto {}: Abierto',
-	    'esDes':"Escanear desde: "
-	    'esHas':"Escanear hasta: "
+	    'esDes':"Escanear desde: ",
+	    'esHas':"Escanear hasta: ",
 	    'errPuer':"ERROR: El rango de puertos va de 1 a 1025!",
 	}[palabra]
 
