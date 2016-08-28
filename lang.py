@@ -33,7 +33,7 @@ def main(palabra):
 	    'intIp':"Type the IP you want to scan:",
 	    'pAb':'Port {}: Opened',
 	    'esDes':"Scan from: ",
-		'esHas':"Scan to: ",
-		'errPuer':"ERROR: Port range is from 1 to 1025!",    
+	    'esHas':"Scan to: ",
+	    'errPuer':"ERROR: Port range is from 1 to 1025!",    
 	}[palabra]
 
